@@ -5,7 +5,9 @@ docker network create jenkins
 docker volume create jenkins-docker-certs
 docker volume create jenkins-data
 
-TODO how can i create an image with the option below so that i can just clikc on run from docker desktop next time
+# to inspect : docker volume ls, docker volume inspect jenkins-data
+
+#TODO how can i create an image with the option below so that i can just clikc on run from docker desktop next time
 docker container run --name jenkins-docker --rm --detach ^
   --privileged --network jenkins --network-alias docker ^
   --env DOCKER_TLS_CERTDIR=/certs ^
@@ -22,3 +24,6 @@ docker container run --name jenkins-tutorial --rm --detach ^
   --volume "%HOMEDRIVE%%HOMEPATH%":/home ^
   --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
 
+# ENTER BASH of the container and check results xml but i cannot find it on my windows pc
+# docker container exec -it jenkins-tutorial bash
+# /var/jenkins_home/workspace/simple-python-pyinstaller-app/test-reports/results.xml
